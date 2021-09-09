@@ -1,0 +1,1 @@
+cmd_hahayes/include/linux/wimax/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/linux/wimax ../include/uapi/linux/wimax i2400m.h; /bin/bash ../scripts/headers_install.sh hahayes/include/linux/wimax ./include/generated/uapi/linux/wimax ; touch hahayes/include/linux/wimax/.install

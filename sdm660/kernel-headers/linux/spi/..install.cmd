@@ -1,0 +1,1 @@
+cmd_hahayes/include/linux/spi/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/linux/spi ../include/uapi/linux/spi spidev.h; /bin/bash ../scripts/headers_install.sh hahayes/include/linux/spi ./include/generated/uapi/linux/spi ; touch hahayes/include/linux/spi/.install
