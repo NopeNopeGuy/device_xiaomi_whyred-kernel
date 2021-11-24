@@ -1,1 +1,0 @@
-cmd_hahayes/include/linux/genwqe/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/linux/genwqe ../include/uapi/linux/genwqe genwqe_card.h; /bin/bash ../scripts/headers_install.sh hahayes/include/linux/genwqe ./include/generated/uapi/linux/genwqe ; touch hahayes/include/linux/genwqe/.install

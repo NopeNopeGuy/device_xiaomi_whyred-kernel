@@ -1,1 +1,0 @@
-cmd_hahayes/include/misc/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/misc ../include/uapi/misc cxl.h ocxl.h wigig_sensing_uapi.h; /bin/bash ../scripts/headers_install.sh hahayes/include/misc ./include/generated/uapi/misc ; touch hahayes/include/misc/.install

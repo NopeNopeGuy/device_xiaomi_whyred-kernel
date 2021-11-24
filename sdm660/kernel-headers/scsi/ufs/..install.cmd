@@ -1,1 +1,0 @@
-cmd_hahayes/include/scsi/ufs/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/scsi/ufs ../include/uapi/scsi/ufs ufs.h ioctl.h; /bin/bash ../scripts/headers_install.sh hahayes/include/scsi/ufs ./include/generated/uapi/scsi/ufs ; touch hahayes/include/scsi/ufs/.install

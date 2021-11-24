@@ -1,1 +1,0 @@
-cmd_hahayes/include/linux/netfilter_arp/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/linux/netfilter_arp ../include/uapi/linux/netfilter_arp arp_tables.h arpt_mangle.h; /bin/bash ../scripts/headers_install.sh hahayes/include/linux/netfilter_arp ./include/generated/uapi/linux/netfilter_arp ; touch hahayes/include/linux/netfilter_arp/.install

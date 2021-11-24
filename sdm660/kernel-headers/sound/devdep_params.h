@@ -1,16 +1,3 @@
-/*
- * Copyright (c) 2013-2015,2017, The Linux Foundation. All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License version 2 and
- * only version 2 as published by the Free Software Foundation.
-
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- */
-
 #ifndef _DEV_DEP_H
 #define _DEV_DEP_H
 
@@ -74,6 +61,14 @@ struct snd_pcm_mmap_fd {
 	int32_t actual_size;
 };
 
+struct snd_pcm_prsnt_position {
+	uint64_t timestamp;
+	uint64_t frames;
+	int32_t clock_id;
+};
+
 #define SNDRV_PCM_IOCTL_MMAP_DATA_FD    _IOWR('U', 0xd2, struct snd_pcm_mmap_fd)
+#define SNDRV_PCM_IOCTL_DSP_POSITION\
+			_IOWR('U', 0xd3, struct snd_pcm_prsnt_position)
 
 #endif
