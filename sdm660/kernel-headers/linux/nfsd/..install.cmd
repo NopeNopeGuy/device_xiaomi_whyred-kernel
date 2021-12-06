@@ -1,0 +1,1 @@
+cmd_hahayes/include/linux/nfsd/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/linux/nfsd ../include/uapi/linux/nfsd nfsfh.h debug.h stats.h cld.h export.h; /bin/bash ../scripts/headers_install.sh hahayes/include/linux/nfsd ./include/generated/uapi/linux/nfsd ; touch hahayes/include/linux/nfsd/.install
