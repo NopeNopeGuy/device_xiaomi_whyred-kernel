@@ -2,6 +2,9 @@
 #ifndef __MSM_MEDIA_INFO_H__
 #define __MSM_MEDIA_INFO_H__
 
+#include <asm/bitsperlong.h>
+
+
 #define NV12_STRIDE_ALIGNMENT 128
 #define NV12_SCANLINE_ALIGNMENT 32
 
@@ -50,10 +53,10 @@ enum color_fmts {
 	 * . . . . . . . . . . . . . . . .  V
 	 * . . . . . . . . . . . . . . . .  --> Buffer size alignment
 	 *
-	 * Y_Stride : Width aligned to 128
-	 * UV_Stride : Width aligned to 128
-	 * Y_Scanlines: Height aligned to 32
-	 * UV_Scanlines: Height/2 aligned to 16
+	 * Y_Stride : Width aligned to 512 or 128
+	 * UV_Stride : Width aligned to 512 or 128
+	 * Y_Scanlines: Height aligned to 512 or 32
+	 * UV_Scanlines: Height/2 aligned to 256 or 16
 	 * Total size = align(Y_Stride * Y_Scanlines
 	 *          + UV_Stride * UV_Scanlines, 4096)
 	 */
@@ -120,10 +123,10 @@ enum color_fmts {
 	 * . . . . . . . . . . . . . . . .  V
 	 * . . . . . . . . . . . . . . . .  --> Padding & Buffer size alignment
 	 *
-	 * Y_Stride : Width aligned to 128
-	 * UV_Stride : Width aligned to 128
-	 * Y_Scanlines: Height aligned to 32
-	 * UV_Scanlines: Height/2 aligned to 16
+	 * Y_Stride : Width aligned to 512 or 128
+	 * UV_Stride : Width aligned to 512 or 128
+	 * Y_Scanlines: Height aligned to 512 or 32
+	 * UV_Scanlines: Height/2 aligned to 256 or 16
 	 * Total size = align(Y_Stride * Y_Scanlines
 	 *          + UV_Stride * UV_Scanlines, 4096)
 	 */
@@ -867,8 +870,8 @@ static __inline__ unsigned int VENUS_UV_STRIDE(unsigned int color_fmt,
 		goto invalid_input;
 
 	switch (color_fmt) {
-	case COLOR_FMT_NV12:
 	case COLOR_FMT_NV21:
+	case COLOR_FMT_NV12:
 		alignment = NV12_STRIDE_ALIGNMENT;
 		stride = MSM_MEDIA_ALIGN(width, alignment);
 		break;
@@ -954,8 +957,8 @@ static __inline__ unsigned int VENUS_UV_SCANLINES(unsigned int color_fmt,
 		goto invalid_input;
 
 	switch (color_fmt) {
-	case COLOR_FMT_NV12:
 	case COLOR_FMT_NV21:
+	case COLOR_FMT_NV12:
 		alignment = NV12_SCANLINE_ALIGNMENT/2;
 		break;
 	case COLOR_FMT_NV12_512:
