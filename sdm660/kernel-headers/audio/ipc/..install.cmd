@@ -1,0 +1,1 @@
+cmd_hahayes/include/audio/ipc/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/audio/ipc ../techpack/audio/ipc ; /bin/bash ../scripts/headers_install.sh hahayes/include/audio/ipc ./techpack/audio/ipc ; touch hahayes/include/audio/ipc/.install

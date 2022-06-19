@@ -1,0 +1,1 @@
+cmd_hahayes/include/audio/dsp/codecs/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/audio/dsp/codecs ../techpack/audio/dsp/codecs audio_utils.h audio_utils_aio.h q6audio_common.h; /bin/bash ../scripts/headers_install.sh hahayes/include/audio/dsp/codecs ./techpack/audio/dsp/codecs ; touch hahayes/include/audio/dsp/codecs/.install
