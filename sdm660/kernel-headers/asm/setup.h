@@ -1,4 +1,3 @@
-/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 /*
  * Based on arch/arm/include/asm/setup.h
  *
@@ -22,6 +21,6 @@
 
 #include <linux/types.h>
 
-#define COMMAND_LINE_SIZE	4096
+#define COMMAND_LINE_SIZE	2048
 
 #endif

@@ -1,4 +1,3 @@
-/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
 #ifndef __UAPI_LINUX_MSM_CAMSENSOR_SDK_H
 #define __UAPI_LINUX_MSM_CAMSENSOR_SDK_H
 
@@ -51,11 +50,7 @@
 
 #define MSM_SENSOR_BYPASS_VIDEO_NODE    1
 
-#define SENSOR_PROBE_WRITE
-
-#define SECURE_CAMERA
-
-#define SECURE_CAM_RST_MODULES
+#define FRONT_AUX_SENSOR_SUPPORT
 
 enum msm_sensor_camera_id_t {
 	CAMERA_0,
@@ -77,6 +72,7 @@ enum camb_position_t {
 	BACK_CAMERA_B,
 	FRONT_CAMERA_B,
 	AUX_CAMERA_B = 0x100,
+	FRONT_AUX_CAMERA_B,
 	INVALID_CAMERA_B,
 };
 
@@ -249,10 +245,10 @@ struct msm_sensor_power_setting {
 
 struct msm_sensor_power_setting_array {
 	struct msm_sensor_power_setting  power_setting_a[MAX_POWER_CONFIG];
-	struct msm_sensor_power_setting  *power_setting;
+	struct msm_sensor_power_setting *power_setting;
 	unsigned short size;
 	struct msm_sensor_power_setting  power_down_setting_a[MAX_POWER_CONFIG];
-	struct msm_sensor_power_setting  *power_down_setting;
+	struct msm_sensor_power_setting *power_down_setting;
 	unsigned short size_down;
 };
 
@@ -299,20 +295,46 @@ struct msm_sensor_init_params {
 	unsigned int            sensor_mount_angle;
 };
 
-struct msm_camera_i2c_reg_setting {
-	struct msm_camera_i2c_reg_array *reg_setting;
-	unsigned short size;
-	enum msm_camera_i2c_reg_addr_type addr_type;
-	enum msm_camera_i2c_data_type data_type;
-	unsigned short delay;
-};
-
 struct msm_sensor_id_info_t {
 	unsigned short sensor_id_reg_addr;
 	unsigned short sensor_id;
 	unsigned short sensor_id_mask;
-	struct msm_camera_i2c_reg_setting setting;
 };
+
+enum msm_cci_i2c_master_t {
+	MSM_MASTER_0,
+	MSM_MASTER_1,
+	MSM_MASTER_MAX,
+};
+
+struct msm_vendor_id_info_t {
+	unsigned short eeprom_slave_addr;
+	unsigned short vendor_id_addr;
+	enum msm_camera_i2c_reg_addr_type addr_type;
+	unsigned short vendor_id;
+	enum msm_camera_i2c_data_type data_type;
+	enum msm_cci_i2c_master_t cci_i2c_master;
+};
+
+struct msm_vcm_id_info_t {
+	unsigned short eeprom_slave_addr;
+	unsigned short vcm_id_addr;
+	enum msm_camera_i2c_reg_addr_type addr_type;
+	unsigned short vcm_id;
+	enum msm_camera_i2c_data_type data_type;
+	enum msm_cci_i2c_master_t cci_i2c_master;
+};
+
+#ifdef CONFIG_XIAOMI_NEW_CAMERA_BLOBS
+struct msm_lens_id_info_t {
+	unsigned short eeprom_slave_addr;
+	unsigned short lens_id_addr;
+	enum msm_camera_i2c_reg_addr_type addr_type;
+	unsigned short lens_id;
+	enum msm_camera_i2c_data_type data_type;
+	enum msm_cci_i2c_master_t cci_i2c_master;
+};
+#endif
 
 struct msm_camera_sensor_slave_info {
 	char sensor_name[32];
@@ -325,6 +347,11 @@ struct msm_camera_sensor_slave_info {
 	enum i2c_freq_mode_t i2c_freq_mode;
 	enum msm_camera_i2c_reg_addr_type addr_type;
 	struct msm_sensor_id_info_t sensor_id_info;
+	struct msm_vendor_id_info_t vendor_id_info;
+	struct msm_vcm_id_info_t vcm_id_info;
+#ifdef CONFIG_XIAOMI_NEW_CAMERA_BLOBS
+	struct msm_lens_id_info_t lens_id_info;
+#endif
 	struct msm_sensor_power_setting_array power_setting_array;
 	unsigned char  is_init_params_valid;
 	struct msm_sensor_init_params sensor_init_params;
@@ -336,6 +363,14 @@ struct msm_camera_i2c_reg_array {
 	unsigned short reg_addr;
 	unsigned short reg_data;
 	unsigned int delay;
+};
+
+struct msm_camera_i2c_reg_setting {
+	struct msm_camera_i2c_reg_array *reg_setting;
+	unsigned short size;
+	enum msm_camera_i2c_reg_addr_type addr_type;
+	enum msm_camera_i2c_data_type data_type;
+	unsigned short delay;
 };
 
 struct msm_camera_csid_vc_cfg {
@@ -357,9 +392,6 @@ struct msm_camera_csid_params {
 	unsigned int csi_clk;
 	struct msm_camera_csid_lut_params lut_params;
 	unsigned char csi_3p_sel;
-	unsigned char is_secure;
-	uint32_t topology;
-	unsigned char is_streamon;
 };
 
 struct msm_camera_csid_testmode_parms {
@@ -415,8 +447,8 @@ struct damping_params_t {
 
 struct region_params_t {
 	/* [0] = ForwardDirection Macro boundary
-	 *  [1] = ReverseDirection Inf boundary
-	 */
+	   [1] = ReverseDirection Inf boundary
+	*/
 	unsigned short step_bound[2];
 	unsigned short code_per_step;
 	/* qvalue for converting float type numbers to integer format */

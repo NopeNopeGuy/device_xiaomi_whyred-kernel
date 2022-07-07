@@ -1,6 +1,13 @@
-/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
-/*
- * Copyright (c) 2015-2019, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2015-2017, The Linux Foundation. All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2 and
+ * only version 2 as published by the Free Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  */
 
 #ifndef _SPCOM_H_
@@ -10,7 +17,6 @@
 #ifndef BIT
 	#define BIT(x) (1 << x)
 #endif
-
 #ifndef PAGE_SIZE
 	#define PAGE_SIZE 4096
 #endif
@@ -32,6 +38,7 @@
 
 /* Maximum size (including null) for channel names */
 #define SPCOM_CHANNEL_NAME_SIZE		32
+
 /*
  * file read(fd, buf, size) with this size,
  * hints the kernel that user space wants to read the next-req-size.
@@ -50,14 +57,6 @@ enum spcom_cmd_id {
 	SPCOM_CMD_UNLOCK_ION_BUF = 0x554C434B, /* "ULCK" = 0x4C4F434B */
 	SPCOM_CMD_FSSR		= 0x46535352, /* "FSSR" = 0x46535352 */
 	SPCOM_CMD_CREATE_CHANNEL = 0x43524554, /* "CRET" = 0x43524554 */
-
-#define SPCOM_CMD_ENABLE_SSR \
-	SPCOM_CMD_ENABLE_SSR
-	SPCOM_CMD_ENABLE_SSR     = 0x45535352,   /* "ESSR" =0x45535352*/
-
-#define SPCOM_CMD_RESTART_SP \
-	SPCOM_CMD_RESTART_SP
-	SPCOM_CMD_RESTART_SP         = 0x52535452,   /* "RSTR" = 0x52535452 */
 };
 
 /*
@@ -90,17 +89,6 @@ struct spcom_send_command {
 struct spcom_user_create_channel_command {
 	enum spcom_cmd_id cmd_id;
 	char ch_name[SPCOM_CHANNEL_NAME_SIZE];
-#define SPCOM_IS_SHARABLE_SUPPORTED
-	bool is_sharable;
-} __attribute__((packed));
-
-/* Command structure between userspace spcomlib and spcom driver, on write() */
-#define SPCOM_USER_RESTART_SP_CMD
-struct spcom_user_restart_sp_command {
-	enum spcom_cmd_id cmd_id;
-	uint32_t arg;
-#define SPCOM_IS_UPDATED_SUPPORETED
-	uint32_t is_updated;
 } __attribute__((packed));
 
 /* maximum ION buf for send-modfied-command */
@@ -127,30 +115,5 @@ struct spcom_user_send_modified_command {
 	char buf[0]; /* Variable buffer size - must be last field */
 } __attribute__((packed));
 
-enum {
-	SPCOM_IONFD_CMD,
-	SPCOM_POLL_CMD,
-};
-
-enum spcom_poll_cmd_id {
-	SPCOM_LINK_STATE_REQ,
-	SPCOM_CH_CONN_STATE_REQ,
-};
-
-struct spcom_poll_param {
-	/* input parameters */
-	bool wait;
-	enum spcom_poll_cmd_id cmd_id;
-	/* output parameter */
-	int retval;
-} __attribute__((packed));
-
-#define SPCOM_IOCTL_MAGIC	'S'
-#define SPCOM_GET_IONFD _IOR(SPCOM_IOCTL_MAGIC, SPCOM_IONFD_CMD, \
-			     struct spcom_ion_handle)
-#define SPCOM_SET_IONFD _IOW(SPCOM_IOCTL_MAGIC, SPCOM_IONFD_CMD, \
-			     struct spcom_ion_handle)
-#define SPCOM_POLL_STATE _IOWR(SPCOM_IOCTL_MAGIC, SPCOM_POLL_CMD, \
-			       struct spcom_poll_param)
 
 #endif /* _SPCOM_H_ */

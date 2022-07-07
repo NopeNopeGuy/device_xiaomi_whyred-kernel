@@ -1,4 +1,3 @@
-/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 /*
  * Copyright (C) 2008 Google, Inc.
  *
@@ -89,6 +88,13 @@ enum flat_binder_object_flags {
 	 */
 	FLAT_BINDER_FLAG_INHERIT_RT = 0x800,
 
+	/**
+	 * @FLAT_BINDER_FLAG_TXN_SECURITY_CTX: request security contexts
+	 *
+	 * Only when set, causes senders to include their security
+	 * context
+	 */
+	FLAT_BINDER_FLAG_TXN_SECURITY_CTX = 0x1000,
 };
 
 #ifdef BINDER_IPC_32BIT
@@ -257,25 +263,6 @@ struct binder_node_info_for_ref {
 	__u32            reserved3;
 };
 
-struct binder_freeze_info {
-	__u32            pid;
-	__u32            enable;
-	__u32            timeout_ms;
-};
-
-struct binder_frozen_status_info {
-	__u32            pid;
-
-	/* process received sync transactions since last frozen
-	 * bit 0: received sync transaction after being frozen
-	 * bit 1: new pending sync transaction during freezing
-	 */
-	__u32            sync_recv;
-
-	/* process received async transactions since last frozen */
-	__u32            async_recv;
-};
-
 #define BINDER_WRITE_READ		_IOWR('b', 1, struct binder_write_read)
 #define BINDER_SET_IDLE_TIMEOUT		_IOW('b', 3, __s64)
 #define BINDER_SET_MAX_THREADS		_IOW('b', 5, __u32)
@@ -286,9 +273,6 @@ struct binder_frozen_status_info {
 #define BINDER_GET_NODE_DEBUG_INFO	_IOWR('b', 11, struct binder_node_debug_info)
 #define BINDER_GET_NODE_INFO_FOR_REF	_IOWR('b', 12, struct binder_node_info_for_ref)
 #define BINDER_SET_CONTEXT_MGR_EXT	_IOW('b', 13, struct flat_binder_object)
-#define BINDER_FREEZE			_IOW('b', 14, struct binder_freeze_info)
-#define BINDER_GET_FROZEN_INFO		_IOWR('b', 15, struct binder_frozen_status_info)
-#define BINDER_ENABLE_ONEWAY_SPAM_DETECTION	_IOW('b', 16, __u32)
 
 /*
  * NOTE: Two special error codes you should check for when calling
@@ -347,6 +331,10 @@ struct binder_transaction_data {
 	} data;
 };
 
+struct binder_transaction_data_secctx {
+	struct binder_transaction_data transaction_data;
+	binder_uintptr_t secctx;
+};
 
 struct binder_transaction_data_sg {
 	struct binder_transaction_data transaction_data;
@@ -383,6 +371,11 @@ enum binder_driver_return_protocol {
 	BR_OK = _IO('r', 1),
 	/* No parameters! */
 
+	BR_TRANSACTION_SEC_CTX = _IOR('r', 2,
+				      struct binder_transaction_data_secctx),
+	/*
+	 * binder_transaction_data_secctx: the received command.
+	 */
 	BR_TRANSACTION = _IOR('r', 2, struct binder_transaction_data),
 	BR_REPLY = _IOR('r', 3, struct binder_transaction_data),
 	/*
@@ -459,19 +452,6 @@ enum binder_driver_return_protocol {
 	/*
 	 * The the last transaction (either a bcTRANSACTION or
 	 * a bcATTEMPT_ACQUIRE) failed (e.g. out of memory).  No parameters.
-	 */
-
-	BR_FROZEN_REPLY = _IO('r', 18),
-	/*
-	 * The target of the last transaction (either a bcTRANSACTION or
-	 * a bcATTEMPT_ACQUIRE) is frozen.  No parameters.
-	 */
-
-	BR_ONEWAY_SPAM_SUSPECT = _IO('r', 19),
-	/*
-	 * Current process sent too many oneway calls to target, and the last
-	 * asynchronous transaction makes the allocated async buffer size exceed
-	 * detection threshold.  No parameters.
 	 */
 };
 

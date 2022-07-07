@@ -1,4 +1,3 @@
-/* SPDX-License-Identifier: GPL-2.0+ WITH Linux-syscall-note */
 /***************************************************************************
  * Linux PPP over L2TP (PPPoL2TP) Socket Implementation (RFC 2661)
  *
@@ -17,8 +16,7 @@
 #define __LINUX_IF_PPPOL2TP_H
 
 #include <linux/types.h>
-#include <linux/in.h>
-#include <linux/in6.h>
+
 #include <linux/l2tp.h>
 
 /* Structure used to connect() the socket to a particular tunnel UDP

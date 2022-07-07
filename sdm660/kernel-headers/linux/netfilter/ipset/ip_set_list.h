@@ -1,8 +1,5 @@
-/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 #ifndef __IP_SET_LIST_H
 #define __IP_SET_LIST_H
-
-#include <linux/netfilter/ipset/ip_set.h>
 
 /* List type specific error codes */
 enum {

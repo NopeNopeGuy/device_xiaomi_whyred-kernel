@@ -1,4 +1,3 @@
-/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 #ifndef _X_TABLES_H
 #define _X_TABLES_H
 #include <linux/const.h>

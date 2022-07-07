@@ -1,1 +1,0 @@
-cmd_hahayes/include/stub/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/stub ../techpack/stub ; /bin/bash ../scripts/headers_install.sh hahayes/include/stub ./techpack/stub ; touch hahayes/include/stub/.install

@@ -1,1 +1,0 @@
-cmd_hahayes/include/audio/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/audio ../techpack/audio ; /bin/bash ../scripts/headers_install.sh hahayes/include/audio ./techpack/audio ; touch hahayes/include/audio/.install

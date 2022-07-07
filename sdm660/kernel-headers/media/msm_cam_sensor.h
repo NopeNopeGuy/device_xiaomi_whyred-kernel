@@ -1,4 +1,3 @@
-/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
 #ifndef __UAPI_LINUX_MSM_CAM_SENSOR_H
 #define __UAPI_LINUX_MSM_CAM_SENSOR_H
 
@@ -156,8 +155,6 @@ enum csid_cfg_type_t {
 	CSID_CFG,
 	CSID_TESTMODE_CFG,
 	CSID_RELEASE,
-	CSID_SECCAM_TOPOLOGY,
-	CSID_SECCAM_RESET,
 };
 
 enum csiphy_cfg_type_t {
@@ -637,3 +634,4 @@ struct sensor_init_cfg_data {
 	_IOWR('V', BASE_VIDIOC_PRIVATE + 16, struct msm_laser_led_cfg_data_t)
 
 #endif
+

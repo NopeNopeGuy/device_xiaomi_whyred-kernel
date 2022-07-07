@@ -1,4 +1,3 @@
-/* SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note */
 /* const.h: Macros for dealing with constants.  */
 
 #ifndef _LINUX_CONST_H
@@ -22,15 +21,12 @@
 #define _AT(T,X)	((T)(X))
 #endif
 
-#define _UL(x)		(_AC(x, UL))
-#define _ULL(x)		(_AC(x, ULL))
-
-#define _BITUL(x)	(_UL(1) << (x))
-#define _BITULL(x)	(_ULL(1) << (x))
+#define _BITUL(x)	(_AC(1,UL) << (x))
+#define _BITULL(x)	(_AC(1,ULL) << (x))
 
 #define __ALIGN_KERNEL(x, a)		__ALIGN_KERNEL_MASK(x, (typeof(x))(a) - 1)
 #define __ALIGN_KERNEL_MASK(x, mask)	(((x) + (mask)) & ~(mask))
 
 #define __KERNEL_DIV_ROUND_UP(n, d) (((n) + (d) - 1) / (d))
 
-#endif /* _LINUX_CONST_H */
+#endif /* !(_LINUX_CONST_H) */

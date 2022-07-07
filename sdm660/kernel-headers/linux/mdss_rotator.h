@@ -1,8 +1,3 @@
-/* SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note */
-/*
- * Copyright (c) 2016-2019, The Linux Foundation. All rights reserved.
- */
-
 #ifndef _MDSS_ROTATOR_H_
 #define _MDSS_ROTATOR_H_
 
@@ -25,9 +20,9 @@
 /* close a rotation session with the specified rotation session ID */
 #define MDSS_ROTATION_CLOSE	_IOW(MDSS_ROTATOR_IOCTL_MAGIC, 4, unsigned int)
 
-/*
- * Rotation request flag
- */
+/**********************************************************************
+Rotation request flag
+**********************************************************************/
 /* no rotation flag, i.e. color space conversion */
 #define MDP_ROTATION_NOP	0x01
 
@@ -55,9 +50,9 @@
 /* secure data */
 #define MDP_ROTATION_SECURE	0x80
 
-/*
- * Rotation commit flag
- */
+/**********************************************************************
+Rotation commit flag
+**********************************************************************/
 /* Flag indicates to validate the rotation request */
 #define MDSS_ROTATION_REQUEST_VALIDATE	0x01
 
@@ -69,9 +64,9 @@
  */
 #define MDSS_ROTATION_HW_ANY	0xFFFFFFFF
 
-/*
- * Configuration Structures
- */
+/**********************************************************************
+configuration structures
+**********************************************************************/
 struct mdp_rotation_buf_info {
 	uint32_t width;
 	uint32_t height;
@@ -106,21 +101,21 @@ struct mdp_rotation_item {
 	struct mdp_layer_buffer	output;
 
 	/*
-	 * DMA pipe selection for this request by client:
-	 * 0: DMA pipe 0
-	 * 1: DMA pipe 1
-	 * or MDSS_ROTATION_HW_ANY if client wants
-	 * driver to allocate any that is available
-	 */
+	  * DMA pipe selection for this request by client:
+	  * 0: DMA pipe 0
+	  * 1: DMA pipe 1
+	  * or MDSS_ROTATION_HW_ANY if client wants
+	  * driver to allocate any that is available
+	  */
 	uint32_t	pipe_idx;
 
 	/*
-	 * Write-back block selection for this request by client:
-	 * 0: Write-back block 0
-	 * 1: Write-back block 1
-	 * or MDSS_ROTATION_HW_ANY if client wants
-	 * driver to allocate any that is available
-	 */
+	  * Write-back block selection for this request by client:
+	  * 0: Write-back block 0
+	  * 1: Write-back block 1
+	  * or MDSS_ROTATION_HW_ANY if client wants
+	  * driver to allocate any that is available
+	  */
 	uint32_t	wb_idx;
 
 	/* Which session ID is this request scheduled on */
