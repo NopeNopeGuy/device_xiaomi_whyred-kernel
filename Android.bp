@@ -1,0 +1,9 @@
+cc_library_headers {
+    name: "prebuilt_kernel_headers",
+    export_include_dirs: [
+        "sdm660/kernel-headers",
+        "sdm660/kernel-headers/audio/include/uapi",
+    ],
+    recovery_available: true,
+    vendor_available: true,
+}
