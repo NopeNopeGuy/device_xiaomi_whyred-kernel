@@ -1,1 +1,1 @@
-cmd_hahayes/include/linux/nfc/.install := /bin/bash ../scripts/headers_install.sh hahayes/include/linux/nfc ../include/uapi/linux/nfc nfcinfo.h; /bin/bash ../scripts/headers_install.sh hahayes/include/linux/nfc ./include/generated/uapi/linux/nfc ; touch hahayes/include/linux/nfc/.install
+cmd_lemao/include/linux/nfc/.install := /bin/sh ../scripts/headers_install.sh lemao/include/linux/nfc ../include/uapi/linux/nfc nfcinfo.h; /bin/sh ../scripts/headers_install.sh lemao/include/linux/nfc ./include/generated/uapi/linux/nfc ; touch lemao/include/linux/nfc/.install
