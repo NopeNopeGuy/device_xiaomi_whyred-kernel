@@ -1,1 +1,1 @@
-cmd_lemao/include/linux/sched/.install := /bin/sh ../scripts/headers_install.sh lemao/include/linux/sched ../include/uapi/linux/sched types.h; /bin/sh ../scripts/headers_install.sh lemao/include/linux/sched ./include/generated/uapi/linux/sched ; touch lemao/include/linux/sched/.install
+cmd_lemao/include/linux/sched/.install := /bin/bash ../scripts/headers_install.sh lemao/include/linux/sched ../include/uapi/linux/sched types.h; /bin/bash ../scripts/headers_install.sh lemao/include/linux/sched ./include/generated/uapi/linux/sched ; touch lemao/include/linux/sched/.install

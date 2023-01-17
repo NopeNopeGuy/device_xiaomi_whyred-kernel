@@ -1,1 +1,1 @@
-cmd_lemao/include/stub/include/.install := /bin/sh ../scripts/headers_install.sh lemao/include/stub/include ../techpack/stub/include ; /bin/sh ../scripts/headers_install.sh lemao/include/stub/include ./techpack/stub/include ; touch lemao/include/stub/include/.install
+cmd_lemao/include/stub/include/.install := /bin/bash ../scripts/headers_install.sh lemao/include/stub/include ../techpack/stub/include ; /bin/bash ../scripts/headers_install.sh lemao/include/stub/include ./techpack/stub/include ; touch lemao/include/stub/include/.install

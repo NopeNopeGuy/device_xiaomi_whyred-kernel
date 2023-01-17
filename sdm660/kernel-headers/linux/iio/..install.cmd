@@ -1,1 +1,1 @@
-cmd_lemao/include/linux/iio/.install := /bin/sh ../scripts/headers_install.sh lemao/include/linux/iio ../include/uapi/linux/iio events.h types.h; /bin/sh ../scripts/headers_install.sh lemao/include/linux/iio ./include/generated/uapi/linux/iio ; touch lemao/include/linux/iio/.install
+cmd_lemao/include/linux/iio/.install := /bin/bash ../scripts/headers_install.sh lemao/include/linux/iio ../include/uapi/linux/iio events.h types.h; /bin/bash ../scripts/headers_install.sh lemao/include/linux/iio ./include/generated/uapi/linux/iio ; touch lemao/include/linux/iio/.install
