@@ -1,1 +1,1 @@
-cmd_hahayes/include/linux/hdlc/.install := /bin/sh ../scripts/headers_install.sh hahayes/include/linux/hdlc ../include/uapi/linux/hdlc ioctl.h; /bin/sh ../scripts/headers_install.sh hahayes/include/linux/hdlc ./include/generated/uapi/linux/hdlc ; touch hahayes/include/linux/hdlc/.install
+cmd_lemao/include/linux/hdlc/.install := /bin/bash ../scripts/headers_install.sh lemao/include/linux/hdlc ../include/uapi/linux/hdlc ioctl.h; /bin/bash ../scripts/headers_install.sh lemao/include/linux/hdlc ./include/generated/uapi/linux/hdlc ; touch lemao/include/linux/hdlc/.install
