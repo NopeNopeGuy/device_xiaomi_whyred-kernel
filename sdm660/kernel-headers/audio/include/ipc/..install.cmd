@@ -1,1 +1,0 @@
-cmd_lemao/include/audio/include/ipc/.install := /bin/bash ../scripts/headers_install.sh lemao/include/audio/include/ipc ../techpack/audio/include/ipc apr.h apr_tal.h apr_us.h aprv2_vm.h; /bin/bash ../scripts/headers_install.sh lemao/include/audio/include/ipc ./techpack/audio/include/generated/ipc ; touch lemao/include/audio/include/ipc/.install

@@ -1,1 +1,0 @@
-cmd_lemao/include/audio/include/soc/.install := /bin/bash ../scripts/headers_install.sh lemao/include/audio/include/soc ../techpack/audio/include/soc internal.h snd_event.h soundwire.h swr-common.h swr-wcd.h wcd-spi-ac.h; /bin/bash ../scripts/headers_install.sh lemao/include/audio/include/soc ./techpack/audio/include/generated/soc ; touch lemao/include/audio/include/soc/.install

@@ -1,1 +1,0 @@
-cmd_lemao/include/audio/asoc/codecs/msm_sdw/.install := /bin/bash ../scripts/headers_install.sh lemao/include/audio/asoc/codecs/msm_sdw ../techpack/audio/asoc/codecs/msm_sdw msm_sdw.h msm_sdw_registers.h; /bin/bash ../scripts/headers_install.sh lemao/include/audio/asoc/codecs/msm_sdw ./techpack/audio/asoc/codecs/msm_sdw ; touch lemao/include/audio/asoc/codecs/msm_sdw/.install

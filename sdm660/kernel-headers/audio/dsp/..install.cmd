@@ -1,1 +1,0 @@
-cmd_lemao/include/audio/dsp/.install := /bin/bash ../scripts/headers_install.sh lemao/include/audio/dsp ../techpack/audio/dsp adsp_err.h audio_pdr.h audio_ssr.h q6_init.h q6afecal-hwdep.h q6usm.h usf.h usfcdev.h; /bin/bash ../scripts/headers_install.sh lemao/include/audio/dsp ./techpack/audio/dsp ; touch lemao/include/audio/dsp/.install

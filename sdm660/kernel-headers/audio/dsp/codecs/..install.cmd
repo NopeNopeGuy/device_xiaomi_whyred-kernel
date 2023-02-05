@@ -1,1 +1,0 @@
-cmd_lemao/include/audio/dsp/codecs/.install := /bin/bash ../scripts/headers_install.sh lemao/include/audio/dsp/codecs ../techpack/audio/dsp/codecs audio_utils.h audio_utils_aio.h q6audio_common.h; /bin/bash ../scripts/headers_install.sh lemao/include/audio/dsp/codecs ./techpack/audio/dsp/codecs ; touch lemao/include/audio/dsp/codecs/.install

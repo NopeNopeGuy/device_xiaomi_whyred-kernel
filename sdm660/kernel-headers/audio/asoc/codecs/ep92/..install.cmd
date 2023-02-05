@@ -1,1 +1,0 @@
-cmd_lemao/include/audio/asoc/codecs/ep92/.install := /bin/bash ../scripts/headers_install.sh lemao/include/audio/asoc/codecs/ep92 ../techpack/audio/asoc/codecs/ep92 ep92.h; /bin/bash ../scripts/headers_install.sh lemao/include/audio/asoc/codecs/ep92 ./techpack/audio/asoc/codecs/ep92 ; touch lemao/include/audio/asoc/codecs/ep92/.install
