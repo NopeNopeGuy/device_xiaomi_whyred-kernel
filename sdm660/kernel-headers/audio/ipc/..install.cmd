@@ -1,0 +1,1 @@
+cmd_lemao/include/audio/ipc/.install := /bin/bash ../scripts/headers_install.sh lemao/include/audio/ipc ../techpack/audio/ipc ; /bin/bash ../scripts/headers_install.sh lemao/include/audio/ipc ./techpack/audio/ipc ; touch lemao/include/audio/ipc/.install
