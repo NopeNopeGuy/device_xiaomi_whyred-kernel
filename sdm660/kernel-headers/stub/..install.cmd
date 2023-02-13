@@ -1,0 +1,1 @@
+cmd_lemao/include/stub/.install := /bin/bash ../scripts/headers_install.sh lemao/include/stub ../techpack/stub ; /bin/bash ../scripts/headers_install.sh lemao/include/stub ./techpack/stub ; touch lemao/include/stub/.install
