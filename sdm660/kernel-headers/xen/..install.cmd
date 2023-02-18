@@ -1,1 +1,1 @@
-cmd_hahayes/include/xen/.install := /bin/sh ../scripts/headers_install.sh hahayes/include/xen ../include/uapi/xen evtchn.h gntalloc.h gntdev.h privcmd.h; /bin/sh ../scripts/headers_install.sh hahayes/include/xen ./include/generated/uapi/xen ; touch hahayes/include/xen/.install
+cmd_lemao/include/xen/.install := /bin/bash ../scripts/headers_install.sh lemao/include/xen ../include/uapi/xen evtchn.h gntalloc.h gntdev.h privcmd.h; /bin/bash ../scripts/headers_install.sh lemao/include/xen ./include/generated/uapi/xen ; touch lemao/include/xen/.install
