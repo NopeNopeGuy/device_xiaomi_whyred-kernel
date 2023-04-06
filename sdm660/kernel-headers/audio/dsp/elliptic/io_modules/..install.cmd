@@ -1,0 +1,1 @@
+cmd_lemao/include/audio/dsp/elliptic/io_modules/.install := /bin/bash ../scripts/headers_install.sh lemao/include/audio/dsp/elliptic/io_modules ../techpack/audio/dsp/elliptic/io_modules ; /bin/bash ../scripts/headers_install.sh lemao/include/audio/dsp/elliptic/io_modules ./techpack/audio/dsp/elliptic/io_modules ; touch lemao/include/audio/dsp/elliptic/io_modules/.install
