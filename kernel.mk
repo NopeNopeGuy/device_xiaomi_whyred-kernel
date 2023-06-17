@@ -1,8 +1,5 @@
 KERNEL_PREBUILT_PATH := device/xiaomi/whyred-kernel
 
-# Headers
-PRODUCT_VENDOR_KERNEL_HEADERS := $(KERNEL_PREBUILT_PATH)/sdm660/kernel-headers
-
 # Kernel
 LOCAL_KERNEL := $(KERNEL_PREBUILT_PATH)/Image.gz-dtb
 PRODUCT_COPY_FILES += \
